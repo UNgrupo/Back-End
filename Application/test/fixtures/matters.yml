@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idMatter: 1
+  Name: MyString
+  Themes_number: 1
+
+two:
+  idMatter: 1
+  Name: MyString
+  Themes_number: 1

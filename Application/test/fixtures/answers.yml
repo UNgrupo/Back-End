@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idAnswer: 1
+  Description: MyText
+  Qualification: 1
+  Date: 2018-09-20
+  idUser: 1
+  idQuestion: 1
+
+two:
+  idAnswer: 1
+  Description: MyText
+  Qualification: 1
+  Date: 2018-09-20
+  idUser: 1
+  idQuestion: 1

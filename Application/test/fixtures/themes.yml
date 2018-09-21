@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idTheme: 1
+  Name: MyString
+  Questions_number: 1
+  idMatter: 1
+
+two:
+  idTheme: 1
+  Name: MyString
+  Questions_number: 1
+  idMatter: 1

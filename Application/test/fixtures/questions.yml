@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idQuestion: 1
+  Title: MyString
+  Description: MyText
+  Date: 2018-09-20
+  idTheme: 1
+  idUser: 1
+
+two:
+  idQuestion: 1
+  Title: MyString
+  Description: MyText
+  Date: 2018-09-20
+  idTheme: 1
+  idUser: 1
