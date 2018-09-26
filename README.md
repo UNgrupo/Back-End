@@ -7,3 +7,6 @@ Navigation: [Website][1] | [FrontEnd repository][2] | **BackEnd repository**
 
 **🔨**
 Raul Orcasitas
+
+******
+Camilo Esteban Nieto Barrera
