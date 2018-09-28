@@ -1,10 +1,9 @@
 class CreateDocuments < ActiveRecord::Migration[5.2]
   def change
     create_table :documents do |t|
+      t.references :documentable, polymorphic: true
       t.integer :idDocument
       t.string :Title
-      t.integer :idUser
-      t.integer :idQuestion
 
       t.timestamps
     end

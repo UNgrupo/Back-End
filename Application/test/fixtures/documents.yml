@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  documentable: one
+  documentable_type: Documentable
   idDocument: 1
   Title: MyString
-  idUser: 1
-  idQuestion: 1
 
 two:
+  documentable: two
+  documentable_type: Documentable
   idDocument: 1
   Title: MyString
-  idUser: 1
-  idQuestion: 1

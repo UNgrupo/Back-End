@@ -8,22 +8,16 @@ class User < ApplicationRecord
   valdiates :Followers_number, numericality: { only_integer: true }
   validates :idStat, presence: true
 
-  has_many :questions
-  validates_associated :questions
+  # Relacion ---> Comment
+  has_many :comments, as: :commentable
 
-  has_many :documents
-  validates_associated :documents
+  # Relacion ---> Question
+  has_many :questions, as: :questionable
 
-  has_one :stat
-  validates_associated :stat
+  # Relacion ---> Answer
+  has_many :answers, as: :answerable
 
-  has_many :photos
-  validates_associated :photos
-
-  has_many :comments
-  validates_associated :comments
-
-  has_many :answers
-  validates_associated :answers
+  # Relacion ---> Documents
+  has_many :documents, as: :documentable
 
 end

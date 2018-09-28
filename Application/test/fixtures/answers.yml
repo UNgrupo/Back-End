@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  answerable: one
+  answerable_type: Answerable
   idAnswer: 1
   Description: MyText
   Qualification: 1
-  Date: 2018-09-20
-  idUser: 1
-  idQuestion: 1
+  Date: 2018-09-27
 
 two:
+  answerable: two
+  answerable_type: Answerable
   idAnswer: 1
   Description: MyText
   Qualification: 1
-  Date: 2018-09-20
-  idUser: 1
-  idQuestion: 1
+  Date: 2018-09-27

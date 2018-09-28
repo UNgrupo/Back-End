@@ -5,11 +5,7 @@ class Theme < ApplicationRecord
   validates :Questions_number, presence: false
   validates :idMatter, presence: false
 
+  has_many :questions, as: :questionable
 
-  has_many :questions
-  validates_associated :matters
-
-  belongs_to :matter
-  validates_associated :matter
 
 end
