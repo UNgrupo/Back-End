@@ -1,11 +1,11 @@
 class User < ApplicationRecord
 
   validates :idUser, uniqueness: true, numericality: { only_integer: true }
-  validates :Name, presence: true, confirmation: { case_sensitive: false }, length: {minimun 5}
+  validates :Name, presence: true, format: { with: /\A[a-zA-Z]+\z/}
   validates :Level, presence: true
   validates :Reputation, presence: false
   validates :Role, presence: true
-  valdiates :Followers_number, numericality: { only_integer: true }
+  validates :Followers_number, numericality: { only_integer: true }
   validates :idStat, presence: true
 
   # Relacion ---> Comment

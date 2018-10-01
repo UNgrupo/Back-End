@@ -4,9 +4,9 @@ class Question < ApplicationRecord
 
   # Validaciones para los campos
   validates :idQuestion, uniqueness: true, numericality: { only_integer: true }
-  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimun 15}
+  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
   validates :Date, presence: true
-  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimun 15}
+  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
 
   # Relacion ---> Answer
   has_many :answer, as: :answerable
@@ -14,6 +14,6 @@ class Question < ApplicationRecord
   # Relacion ---> Answer
   has_many :documents, as: :documentable
 
-  
+
 
 end

@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
 
   # Validaciones de los campos
   validates :idComment, uniqueness: true, numericality: { only_integer: true }
-  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimun 15}
+  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
   validates :Date, presence: true
-  
+
 end
