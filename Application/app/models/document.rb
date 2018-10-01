@@ -4,6 +4,6 @@ class Document < ApplicationRecord
 
   # Validaciones para los campos
   validates :idDocument, uniqueness: true, numericality: { only_integer: true }
-  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimun 15}
+  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimun: 15}
 
 end

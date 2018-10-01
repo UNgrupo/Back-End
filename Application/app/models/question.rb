@@ -14,6 +14,6 @@ class Question < ApplicationRecord
   # Relacion ---> Answer
   has_many :documents, as: :documentable
 
-  
+
 
 end
