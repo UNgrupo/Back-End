@@ -44,7 +44,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.permit(:Name, :idUser)
+       params.permit(:Name, :idUser, :Role, :Level, :Followers_number, :idStat)
    end
 
 end

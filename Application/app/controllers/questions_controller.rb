@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
 
   end
 
-  def params_answer
-      params.permit(:idQuestion, :Title)
+  def params_question
+      params.permit(:idQuestion, :Title, :Date, :Description)
   end
 end

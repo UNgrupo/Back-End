@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   # Para POST
   def create
-      comment = Comment.new(params_commet)
+      comment = Comment.new(params_comment)
       if comment.save
           render json:comment, status:201
       else
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
 
   end
 
-  def params_answer
-      params.permit(:idComment)
+  def params_comment
+      params.permit(:idComment, :Description, :Date, :commentable)
   end
 end

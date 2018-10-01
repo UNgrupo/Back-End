@@ -16,8 +16,8 @@ class AnswersController < ApplicationController
 
     # Para POST
     def create
-        answer = Answer.new(params_user)
-        if user.save
+        answer = Answer.new(params_answer)
+        if answer.save
             render json:answer, status:201
         else
             render json:answer.errors, status: :unprocessable_entity
@@ -45,6 +45,6 @@ class AnswersController < ApplicationController
     end
 
     def params_answer
-        params.permit(:idAnswer)
+        params.permit(:idAnswer, :Description, :Qualification, :Date)
     end
 end

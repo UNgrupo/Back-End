@@ -43,7 +43,7 @@ class ThemesController < ApplicationController
 
   end
 
-  def params_answer
+  def params_theme
       params.permit(:idTheme, :Name)
   end
 end
