@@ -1,19 +1,13 @@
 class Question < ApplicationRecord
-  # Relaciones Polimorficas
-  belongs_to :questionable, polymorphic: true
+    belongs_to :user
+    belongs_to :topic
+    has_many :document, dependent: :destroy
+    has_many :answer, dependent: :destroy
 
-  # Validaciones para los campos
-  validates :idQuestion, uniqueness: true, numericality: { only_integer: true }
-  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
-  validates :Date, presence: true
-  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
-
-  # Relacion ---> Answer
-  has_many :answer, as: :answerable
-
-  # Relacion ---> Answer
-  has_many :documents, as: :documentable
-
-
-
+    validates :user, presence: true
+    validates :topic, presence: true
+    validates :id_question, uniqueness: true, numericality: { only_integer: true }
+    validates :title, presence: true, length: {minimum: 10}
+    validates :description, presence: true, length: {minimum: 15}  
+    validates :date, presence: true
 end

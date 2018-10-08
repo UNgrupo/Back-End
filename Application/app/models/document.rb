@@ -1,9 +1,9 @@
 class Document < ApplicationRecord
-  # Relacion polimorfica
-  belongs_to :documentable, polymorphic: true
+    belongs_to :question
+    belongs_to :user
 
-  # Validaciones para los campos
-  validates :idDocument, uniqueness: true, numericality: { only_integer: true }
-  validates :Title, presence: true, confirmation: { case_sensitive: false }, length: {minimun: 15}
-
+    validates :question, presence: true
+    validates :user, presence: true
+    validates :id_document, uniqueness: true, numericality: { only_integer: true }
+    validates :title, presence: true, length: {minimum: 10}  
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_statistic: 1
+  points: 1
+  number_of_answers: 1
+  number_of_questions: 1
+  number_of_best_answers: 1
+
+two:
+  id_statistic: 1
+  points: 1
+  number_of_answers: 1
+  number_of_questions: 1
+  number_of_best_answers: 1

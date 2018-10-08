@@ -1,10 +1,10 @@
 class Comment < ApplicationRecord
-  # Relacion Polimorfica
-  belongs_to :commentable, polymorphic: true
+    belongs_to :answer
+    belongs_to :user
 
-  # Validaciones de los campos
-  validates :idComment, uniqueness: true, numericality: { only_integer: true }
-  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
-  validates :Date, presence: true
-
+    validates :answer, presence: true
+    validates :user, presence: true
+    validates :id_comment, uniqueness: true, numericality: { only_integer: true }
+    validates :description, presence: true, length: {minimum: 15}
+    validates :date, presence: true  
 end

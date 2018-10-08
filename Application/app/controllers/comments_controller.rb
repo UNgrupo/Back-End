@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   # para SHOW
   def show
-    comment = Comment.find(params[:idComment])
+    comment = Comment.find(params[:id_comment])
     respond_to do |format|
        format.json {render json: comment, status:200}
     end
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
 
   # para DELETE
   def destroy
-      comment = Comment.find(params[:idComment])
+      comment = Comment.find(params[:id_comment])
       comment.destroy
       respond_to do |format|
           format.json {render json: comment, status: 200}
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   #para PUT o PATCH
   def update
-      comment = Comment.find(params[:id])
+      comment = Comment.find(params[:id_comment])
       if comment.update(params_comment)
           render json: comment, status: 200
       else
@@ -44,6 +44,6 @@ class CommentsController < ApplicationController
   end
 
   def params_comment
-      params.permit(:idComment, :Description, :Date, :commentable)
+      params.permit(:id_comment, :description, :date, :user, :answer)
   end
 end

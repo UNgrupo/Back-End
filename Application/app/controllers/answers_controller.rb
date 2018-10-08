@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
 
     # para SHOW
     def show
-      answer = Answer.find(params[:idAnswer])
+      answer = Answer.find(params[:id_answer])
       respond_to do |format|
          format.json {render json: answer, status:200}
       end
@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
 
     # para DELETE
     def destroy
-        answer = Answer.find(params[:idAnswer])
+        answer = Answer.find(params[:id_answer])
         answer.destroy
         respond_to do |format|
             format.json {render json: answer, status: 200}
@@ -35,7 +35,7 @@ class AnswersController < ApplicationController
 
     #para PUT o PATCH
     def update
-        answer = Answer.find(params[:id])
+        answer = Answer.find(params[:id_answer])
         if answer.update(params_answer)
             render json: answer, status: 200
         else
@@ -45,6 +45,6 @@ class AnswersController < ApplicationController
     end
 
     def params_answer
-        params.permit(:idAnswer, :Description, :Qualification, :Date)
+        params.permit(:id_answer, :description, :qualification, :date, :user, :question)
     end
 end

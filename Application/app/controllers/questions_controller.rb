@@ -2,12 +2,12 @@ class QuestionsController < ApplicationController
   # para GET
   def index
     questions = Question.all
-    render json:questions, status:200
+    render json: questions, status:200
   end
 
   # para SHOW
   def show
-    question = Question.find(params[:idComment])
+    question = Question.find(params[:id_question])
     respond_to do |format|
        format.json {render json: question, status:200}
     end
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
 
   # para DELETE
   def destroy
-      question = Question.find(params[:idQuestion])
+      question = Question.find(params[:id_question])
       question.destroy
       respond_to do |format|
           format.json {render json: question, status: 200}
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
 
   #para PUT o PATCH
   def update
-      question = Question.find(params[:idQuestion])
+      question = Question.find(params[:id_question])
       if question.update(params_question)
           render json: question, status: 200
       else
@@ -44,6 +44,6 @@ class QuestionsController < ApplicationController
   end
 
   def params_question
-      params.permit(:idQuestion, :Title, :Date, :Description)
+      params.permit(:id_question, :title, :description, :date, :user, :topic)
   end
 end

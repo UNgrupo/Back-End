@@ -1,13 +1,11 @@
 class Answer < ApplicationRecord
-  # Relacion Polimorfica
-  belongs_to :answerable, polymorphic: true
-
-  # Relacion --> Comment
-  has_many :comments, as: :commentable
-
-  # Validaciones de los campos
-  validates :idAnswer, uniqueness: true, numericality: { only_integer: true }
-  validates :Description, presence: true, confirmation: { case_sensitive: false }, length: {minimum: 15}
-  validates :Qualification, presence: true, numericality: { only_integer: true }
-  validates :Date, presence: true
+    belongs_to :user
+    belongs_to :question
+    has_many :comment, dependent: :destroy
+ 
+    validates :user, presence: true
+    validates :question, presence: true
+    validates :id_answer, uniqueness: true, numericality: { only_integer: true }
+    validates :description, presence: true, length: {minimum: 15}
+    validates :date, presence: true
 end
