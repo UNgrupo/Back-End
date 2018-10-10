@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class DocumentsController < ApplicationController
 
     # para GET
     def index
