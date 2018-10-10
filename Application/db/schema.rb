@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2018_10_08_144260) do
 
   create_table "answers", force: :cascade do |t|
-    t.integer "id_answer"
     t.text "description"
     t.integer "qualification"
     t.date "date"
@@ -26,7 +25,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "id_comment"
     t.text "description"
     t.date "date"
     t.integer "user_id"
@@ -38,18 +36,16 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "id_document"
     t.string "title"
     t.integer "user_id"
-    t.integer "questionm_id"
+    t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionm_id"], name: "index_documents_on_questionm_id"
+    t.index ["question_id"], name: "index_documents_on_question_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer "id_question"
     t.string "title"
     t.text "description"
     t.date "date"
@@ -62,7 +58,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "statistics", force: :cascade do |t|
-    t.integer "id_statistic"
     t.integer "points"
     t.integer "number_of_answers"
     t.integer "number_of_questions"
@@ -74,14 +69,13 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.integer "id_subject"
     t.string "name"
+    t.integer "number_of_topics"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer "id_topic"
     t.string "name"
     t.integer "subject_id"
     t.datetime "created_at", null: false
@@ -90,8 +84,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "id_user"
     t.string "name"
+    t.string "password"
     t.integer "level"
     t.string "reputation"
     t.string "role"

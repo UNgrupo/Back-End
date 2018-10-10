@@ -8,10 +8,8 @@ class AnswersController < ApplicationController
 
     # para SHOW
     def show
-      answer = Answer.find(params[:id_answer])
-      respond_to do |format|
-         format.json {render json: answer, status:200}
-      end
+      answer = Answer.find(params[:id])
+      render json: answer, status:200
     end
 
     # Para POST
@@ -26,16 +24,14 @@ class AnswersController < ApplicationController
 
     # para DELETE
     def destroy
-        answer = Answer.find(params[:id_answer])
+        answer = Answer.find(params[:id])
         answer.destroy
-        respond_to do |format|
-            format.json {render json: answer, status: 200}
-        end
+        render json: answer, status: 200
     end
 
     #para PUT o PATCH
     def update
-        answer = Answer.find(params[:id_answer])
+        answer = Answer.find(params[:id])
         if answer.update(params_answer)
             render json: answer, status: 200
         else
@@ -45,6 +41,6 @@ class AnswersController < ApplicationController
     end
 
     def params_answer
-        params.permit(:id_answer, :description, :qualification, :date, :user, :question)
+        params.permit(:description, :qualification, :date, :user_id, :question_id)
     end
 end

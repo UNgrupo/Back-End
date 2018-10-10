@@ -1,16 +1,15 @@
 class TopicsController < ApplicationController
+
   # para GET
   def index
     topics = Topic.all
     render json:topics, status:200
   end
 
-  # para SHOW
+  # para GET/:id
   def show
-    topic = Topic.find(params[:id_topic])
-    respond_to do |format|
-       format.json {render json:topic , status:200}
-    end
+    topic = Topic.find(params[:id])
+    render json:topic , status:200
   end
 
   # Para POST
@@ -25,16 +24,14 @@ class TopicsController < ApplicationController
 
   # para DELETE
   def destroy
-      topic = Topic.find(params[:id_topic])
+      topic = Topic.find(params[:id])
       topic.destroy
-      respond_to do |format|
-          format.json {render json: topic, status: 200}
-      end
+      render json: topic, status: 200
   end
 
   #para PUT o PATCH
   def update
-      topic = Topic.find(params[:id_topic])
+      topic = Topic.find(params[:id])
       if topic.update(params_topic)
           render json: topic, status: 200
       else
@@ -44,6 +41,6 @@ class TopicsController < ApplicationController
   end
 
   def params_topic
-      params.permit(:id_topic, :name, :subject)
+      params.permit(:name, :subject_id)
   end
 end

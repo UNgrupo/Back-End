@@ -7,10 +7,8 @@ class QuestionsController < ApplicationController
 
   # para SHOW
   def show
-    question = Question.find(params[:id_question])
-    respond_to do |format|
-       format.json {render json: question, status:200}
-    end
+    question = Question.find(params[:id])
+    render json: question, status:200
   end
 
   # Para POST
@@ -27,9 +25,7 @@ class QuestionsController < ApplicationController
   def destroy
       question = Question.find(params[:id_question])
       question.destroy
-      respond_to do |format|
-          format.json {render json: question, status: 200}
-      end
+      render json: question, status: 200
   end
 
   #para PUT o PATCH
@@ -44,6 +40,6 @@ class QuestionsController < ApplicationController
   end
 
   def params_question
-      params.permit(:id_question, :title, :description, :date, :user, :topic)
+      params.permit(:title, :description, :date, :user_id, :topic_id)
   end
 end

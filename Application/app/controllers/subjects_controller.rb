@@ -5,12 +5,10 @@ class SubjectsController < ApplicationController
     render json:subjects, status:200
   end
 
-  # para SHOW
+  # para GET/:id
   def show
-    subject = Subject.find(params[:id_subject])
-    respond_to do |format|
-       format.json {render json:subject , status:200}
-    end
+    subject = Subject.find(params[:id])
+    render json:subject , status:200
   end
 
   # Para POST
@@ -25,16 +23,14 @@ class SubjectsController < ApplicationController
 
   # para DELETE
   def destroy
-      subject = Subject.find(params[:id_subject])
+      subject = Subject.find(params[:id])
       subject.destroy
-      respond_to do |format|
-          format.json {render json: subject, status: 200}
-      end
+      render json: subject, status: 200
   end
 
   #para PUT o PATCH
   def update
-      subject = Subject.find(params[:id_subject])
+      subject = Subject.find(params[:id])
       if subject.update(params_subject)
           render json: subject, status: 200
       else
@@ -44,6 +40,6 @@ class SubjectsController < ApplicationController
   end
 
   def params_subject
-      params.permit(:id_subject, :name)
+      params.permit(:name,:number_of_topics)
   end
 end
