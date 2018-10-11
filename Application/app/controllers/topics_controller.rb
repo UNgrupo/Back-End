@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 
   # para GET
   def index
-    topics = Topic.all
+    topics = Topic.questT.paginate(page: params[:page],per_page: 10)
     render json:topics, status:200
   end
 

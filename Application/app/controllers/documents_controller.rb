@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
 
     # para GET
     def index
-       document = Document.all
+       document = Document.title.paginate(page: params[:page],per_page: 10)
        render json:document, status:200
     end
 

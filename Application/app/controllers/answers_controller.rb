@@ -2,7 +2,10 @@ class AnswersController < ApplicationController
 
     # para GET
     def index
-      answers = Answer.all
+      #answers = Answer.all
+      # using pagiante muestra 10 registros por paginate
+      # date es un scope declarado en el modelo answer.rb
+      answers = Answer.date.paginate(page: params[:page],per_page: 10)
       render json:answers, status:200
     end
 

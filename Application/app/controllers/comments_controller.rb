@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   # para GET
   def index
-    comments = Comment.all
+    comments = Comment.desc.paginate(page: params[:page],per_page: 10)
     render json:comments, status:200
   end
 
