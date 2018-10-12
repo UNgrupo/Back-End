@@ -16,6 +16,10 @@ class Topic < ApplicationRecord
     validates :subject_id, presence: true
     validates :name, presence: true, length: {minimum: 5}
     def self.questT
-      Topic.joins(:questions).where(questions: {title: "Dignissimos incidunt dolor esse."})
+        Topic.joins(:questions).where(questions: {title: "Dignissimos incidunt dolor esse."})
+    end
+
+    def self.subjT
+        Topic.joins(:subject).where(subjects: {name: "excepturi"})
     end
   end

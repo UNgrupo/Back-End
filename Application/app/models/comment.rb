@@ -23,10 +23,21 @@ class Comment < ApplicationRecord
     #SCOPES
 
     def self.desc
-      Comment.where(description: "Sequi nulla culpa voluptates.")
+        Comment.where(description: "Odio repellat et ex.")
     end
-    
+
     def self.date
-      Comment.where(date: "2018-10-10")
+        Comment.where(date: "2018-10-10")
     end
+
+    # Mostrar la informacion de un comentario deacuerdo al nombre de un usuario
+    def self.usercom
+        Comment.joins(:user).where(users: {name: "Doug Mayer"})
+    end
+
+    # Mostrar la informacion de un comentario deacuerdo al titulo de la respuesta
+    def self.ansdesc
+        Comment.joins(:answer).where(answers: {description: "Sequi nulla culpa voluptates." })
+    end
+
 end

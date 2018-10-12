@@ -2,7 +2,7 @@ class StatisticsController < ApplicationController
 
     # para GET
     def index
-       statistics = Statistic.numberq.paginate(page: params[:page],per_page: 10)
+       statistics = Statistic.numquest.paginate(page: params[:page],per_page: 10)
        render json:statistics, status:200
     end
 

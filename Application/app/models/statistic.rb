@@ -22,7 +22,8 @@ class Statistic < ApplicationRecord
     validates :user_id, presence: true
 
     # Mostrar el numero de preguntas de un usuario
-    def self.numberq
-      Statistic.where(user_id: 1)
+    def self.numquest
+        Statistic.joins(:user).where(users: {name: "Exie Beer"})
     end
+
 end

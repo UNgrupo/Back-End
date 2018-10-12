@@ -31,4 +31,14 @@ class Answer < ApplicationRecord
     def self.date
       Answer.where(date: "2018-10-10")
     end
+
+    # Mostrar la informacion de una respuesta deacuerdo a la descripcion de un comentario
+    def self.comdesc
+      Answer.joins(:comments).where(comments: {description: "Odio repellat et ex."})
+    end
+
+    # Mostrar la informacion de una respuesta deacuerdo al nombre de un usuario
+    def self.userans
+      Answer.joins(:user).where(users: {name: "Doug Mayer"})
+    end
 end

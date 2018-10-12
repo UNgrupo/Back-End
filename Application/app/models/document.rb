@@ -20,10 +20,16 @@ class Document < ApplicationRecord
     #SCOPES
 
     def self.title
-      Document.where(title: "Quia accusamus fugiat iusto.")
+        Document.where(title: "Quia accusamus fugiat iusto.")
     end
-    
-    def self.useri
-      Document.where(user_id: "2")
+
+    #Mostrar la informacion de un documento tomando el nombre de un usuario
+    def self.userdoc
+        Document.joins(:user).where(users: {name: "Doug Mayer"})
     end
+    # Mostrar la informacion de un documentos tomando el titulo de la pregunta
+    def self.questdoc
+        Document.joins(:question).where(questions: {title: "Doloremque facilis a voluptas."})
+    end
+
 end

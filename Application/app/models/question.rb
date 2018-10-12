@@ -27,11 +27,12 @@ class Question < ApplicationRecord
     #SCOPES
     #Buscar una pregunta de un usuario
     #scope :usern, joins(:users).where(name: "Doug Mayer")
-    def self.usern
-      #Question.where(name: "Doug Mayer")
+    def self.questans
       Question.joins(:answers).where(answers: {qualification: 66})
     end
-    def self.date
-      Question.where(date: "2018-10-10")
+
+    # Mostrar la informacion de la pregunta <-----
+    def self.questdoc
+      Question.joins(:documents).where(documents: {title: "Enim inventore sunt velit."})
     end
 end
