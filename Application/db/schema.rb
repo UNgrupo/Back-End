@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2018_10_08_144260) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.text "description"
     t.integer "qualification"
     t.date "date"
-    t.integer "user_id"
-    t.integer "question_id"
+    t.bigint "user_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
@@ -27,8 +30,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   create_table "comments", force: :cascade do |t|
     t.text "description"
     t.date "date"
-    t.integer "user_id"
-    t.integer "answer_id"
+    t.bigint "user_id"
+    t.bigint "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_comments_on_answer_id"
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
 
   create_table "documents", force: :cascade do |t|
     t.string "title"
-    t.integer "user_id"
-    t.integer "question_id"
+    t.bigint "user_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_documents_on_question_id"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
     t.string "title"
     t.text "description"
     t.date "date"
-    t.integer "user_id"
-    t.integer "topic_id"
+    t.bigint "user_id"
+    t.bigint "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["topic_id"], name: "index_questions_on_topic_id"
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
     t.integer "number_of_answers"
     t.integer "number_of_questions"
     t.integer "number_of_best_answers"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_statistics_on_user_id"
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
 
   create_table "topics", force: :cascade do |t|
     t.string "name"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_topics_on_subject_id"
