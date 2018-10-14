@@ -34,6 +34,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # gem 'rack-cors'
 gem 'rack-cors', require: 'rack/cors'
 
+# Autenticación basada en token
+gem 'bcrypt', '~> 3.1.7' # Gema que permite almacenar un hash seguro de las contraseñas de usuarios
+gem 'active_model_serializers' # Gema que permite dar formato JSON a los parámetros y datos que deseemos
+gem 'knock' # Gema para la autenticación en Rails
+gem 'jwt' # Gema para usar JSON Web Token
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -15,9 +15,12 @@ it = 1
       "number_of_topics":Faker::Number.number(3)
   ).save
 end
+
 50.times do
   User.new(
       "name":Faker::Name.name,
+      "email":Faker::Internet.unique.email,
+      "usern":Faker::Name.name,
       "password": Faker::Alphanumeric.alphanumeric(25),
       "level":Faker::Number.number(3),
       "reputation":Faker::LeagueOfLegends.rank,

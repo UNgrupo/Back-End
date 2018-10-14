@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     # para GET
     def index
-       users = User.numberq.paginate(page: params[:page],per_page: 20)
+       users = User.all.paginate(page: params[:page],per_page: 20)
        render json:users, status:200
        #render json:users, status:200
     end

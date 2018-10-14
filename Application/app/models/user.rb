@@ -33,7 +33,7 @@ class User < ApplicationRecord
     end
     # muestra la informacion de un usuario dependiendo del numero de preguntas
     def self.numberq
-      User.joins(:statistic).where(statistics: {number_of_questions: 282})
+      User.joins(:statistic).where(statistics: {number_of_questions: 237})
     end
 
 end

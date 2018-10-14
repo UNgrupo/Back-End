@@ -23,7 +23,7 @@ class Statistic < ApplicationRecord
 
     # Mostrar el numero de preguntas de un usuario
     def self.numquest
-        Statistic.joins(:user).where(users: {name: "Exie Beer"})
+        Statistic.joins(:user).where(users: {name: "Libbie Littel"})
     end
 
 end
