@@ -1,7 +1,8 @@
-1.Implementar  la gema  *annotate*  y la gema *will_paginate* --> Samael
-2.Crear queries y scopes para cada uno de los modelos.  Como su nombre lo indica, los queries son consultas a base de datos y deben ir implementadas en *EL MODELO NO EN EL CONTROLADOR* , investiguen que es el querie N+1 e implementen las consultas ---> Samael
+1. Implementar  la gema  *annotate*  y la gema *will_paginate* --> Samael
 
-3.Implementar  los serializadores para cada uno de sus modelos --- >Samael
+2. Crear queries y scopes para cada uno de los modelos.  Como su nombre lo indica, los queries son consultas a base de datos y deben ir implementadas en *EL MODELO NO EN EL CONTROLADOR* , investiguen que es el querie N+1 e implementen las consultas ---> Samael
+
+3. Implementar  los serializadores para cada uno de sus modelos --- >Samael
 
 *ESTE ES EL CORE DE LA ITERACION*
 4. Deben implementar TODA la autenticación de usuarios haciendo uso de TOKENS, aqui tienen varias opciones para realizar esa implemencion: 
