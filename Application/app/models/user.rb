@@ -21,8 +21,12 @@ class User < ApplicationRecord
     has_many :comments
     has_one :statistic
 
+    has_secure_password
+
     validates :password, presence: true, length: {minimum: 5}
+    validates :email, presence: true,null: false, unique: true
     validates :name, presence: true, length: {minimum: 5}
+    validates :usern, presence: true, unique: true
     validates :level, presence: true
     validates :role, presence: true
 

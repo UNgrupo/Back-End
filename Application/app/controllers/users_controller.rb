@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+    before_action :authenticate_user, only: [:index]
     # para GET
     def index
        users = User.all.paginate(page: params[:page],per_page: 20)
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
    def create
       user = User.new(params_user)
       if user.save
-          render json:user, status:201
+          render json: user, status:201
       else
           render json:user.errors, status: :unprocessable_entity
       end
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.permit(:name, :usern, :password, :level, :reputation, :role, :number_of_followers, :photo)
+       params.permit(:name, :email ,:usern, :password, :level, :reputation, :role, :number_of_followers, :photo)
    end
 
 end

@@ -56,6 +56,9 @@
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  # RUtas de Home Controller
+	root   'home#index'
+	get    'auth'            => 'home#auth'
 
   post 'user_token' => 'user_token#create'
   resources :answers
@@ -66,5 +69,5 @@ Rails.application.routes.draw do
   resources :subjects
   resources :topics
   resources :users
- 
+
 end
