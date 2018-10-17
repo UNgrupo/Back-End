@@ -10,3 +10,5 @@
 
 5. Configurar los endpoints de al menos 5 modelos para que puedan ser consumidos por el front ----> Carlos y Samael
 6. Configurar CORS para habilitar la comunicacion con el Front-end. https://github.com/cyu/rack-cors ---> Samael
+
+7. [Heroku] = https://back2application.herokuapp.com/
