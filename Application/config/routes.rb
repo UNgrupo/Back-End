@@ -57,7 +57,15 @@
 
 Rails.application.routes.draw do
 
-  post 'user_token' => 'user_token#create'
+  # Home controller routes.
+  root   'home#index'
+  get    'auth'            => 'home#auth'
+
+  # Get login token from Knock
+  post   'user_token'      => 'user_token#create'
+
+  get    '/users/current'  => 'users#current'
+
   resources :answers
   resources :comments
   resources :documents
@@ -66,5 +74,4 @@ Rails.application.routes.draw do
   resources :subjects
   resources :topics
   resources :users
- 
 end

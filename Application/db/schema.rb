@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
     t.string "name"
     t.string "email"
     t.string "usern"
-    t.string "password"
+    t.string "password_digest"
     t.integer "level"
     t.string "reputation"
     t.string "role"
