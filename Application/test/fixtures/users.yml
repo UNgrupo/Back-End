@@ -1,19 +1,35 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  password            :string
+#  level               :integer
+#  reputation          :string
+#  role                :string
+#  number_of_followers :integer
+#  photo               :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  idUser: 1
-  Name: MyString
-  Level: 1
-  Reputation: MyString
-  Role: MyString
-  Followers_number: 1
-  idStat: 1
+  id_user: 1
+  name: MyString
+  level: 1
+  reputation: MyString
+  role: MyString
+  number_of_followers: 1
+  photo: MyString
 
 two:
-  idUser: 1
-  Name: MyString
-  Level: 1
-  Reputation: MyString
-  Role: MyString
-  Followers_number: 1
-  idStat: 1
+  id_user: 1
+  name: MyString
+  level: 1
+  reputation: MyString
+  role: MyString
+  number_of_followers: 1
+  photo: MyString

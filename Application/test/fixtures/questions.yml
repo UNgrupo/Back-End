@@ -1,17 +1,27 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  description :text
+#  date        :date
+#  user_id     :integer
+#  topic_id    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  questionable: one
-  questionable_type: Questionable
-  idQuestion: 1
-  Title: MyString
-  Description: MyText
-  Date: 2018-09-27
+  id_question: 1
+  title: MyString
+  description: MyText
+  date: 2018-10-08
 
 two:
-  questionable: two
-  questionable_type: Questionable
-  idQuestion: 1
-  Title: MyString
-  Description: MyText
-  Date: 2018-09-27
+  id_question: 1
+  title: MyString
+  description: MyText
+  date: 2018-10-08

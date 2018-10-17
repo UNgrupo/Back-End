@@ -1,23 +1,24 @@
 class UsersController < ApplicationController
 
+    before_action :authenticate_user, only: [:index]
     # para GET
     def index
-       @users = User.all
+       users = User.all.paginate(page: params[:page],per_page: 20)
+       render json:users, status:200
        #render json:users, status:200
     end
 
-    # para SHOW
+    # para GET/:id
     def show
-       user = User.find(params[:idUser])
-       respond_to do |format|
-           format.json {render json: user, status:200}
-       end
-   end
+       user = User.find(params[:id])
+       render json: user, status:200
+    end
+
    # Para POST
    def create
       user = User.new(params_user)
       if user.save
-          render json:user, status:201
+          render json: user, status:201
       else
           render json:user.errors, status: :unprocessable_entity
       end
@@ -25,11 +26,9 @@ class UsersController < ApplicationController
 
    # para DELETE
    def destroy
-       user = User.find(user[:id])
+       user = User.find(params[:id])
        user.destroy
-       respond_to do |format|
-           format.json {render json: user, status: 200}
-       end
+       render json: user, status: 200
    end
 
    #para PUT o PATCH
@@ -44,7 +43,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.permit(:Name, :idUser, :Role, :Level, :Followers_number, :idStat)
+       params.permit(:name, :email ,:usern, :password, :level, :reputation, :role, :number_of_followers, :photo)
    end
 
 end

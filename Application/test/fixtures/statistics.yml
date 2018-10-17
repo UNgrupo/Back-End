@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: statistics
+#
+#  id                     :integer          not null, primary key
+#  points                 :integer
+#  number_of_answers      :integer
+#  number_of_questions    :integer
+#  number_of_best_answers :integer
+#  user_id                :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_statistic: 1
+  points: 1
+  number_of_answers: 1
+  number_of_questions: 1
+  number_of_best_answers: 1
+
+two:
+  id_statistic: 1
+  points: 1
+  number_of_answers: 1
+  number_of_questions: 1
+  number_of_best_answers: 1

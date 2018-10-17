@@ -1,23 +1,43 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  password            :string
+#  level               :integer
+#  reputation          :string
+#  role                :string
+#  number_of_followers :integer
+#  photo               :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 class User < ApplicationRecord
 
-  validates :idUser, uniqueness: true, numericality: { only_integer: true }
-  validates :Name, presence: true, format: { with: /\A[a-zA-Z]+\z/}
-  validates :Level, presence: true
-  validates :Reputation, presence: false
-  validates :Role, presence: true
-  validates :Followers_number, numericality: { only_integer: true }
-  validates :idStat, presence: true
+    has_many :questions
+    has_many :answers
+    has_many :comments
+    has_one :statistic
 
-  # Relacion ---> Comment
-  has_many :comments, as: :commentable
+    has_secure_password
 
-  # Relacion ---> Question
-  has_many :questions, as: :questionable
+    validates :password, presence: true, length: {minimum: 5}
+    validates :email, presence: true,null: false, unique: true
+    validates :name, presence: true, length: {minimum: 5}
+    validates :usern, presence: true, unique: true
+    validates :level, presence: true
+    validates :role, presence: true
 
-  # Relacion ---> Answer
-  has_many :answers, as: :answerable
-
-  # Relacion ---> Documents
-  has_many :documents, as: :documentable
+    #Mostra la informacion del usurio de acuerdo al titulo de la pregunta
+    def self.quest
+      #Question.where(name: "Doug Mayer")
+      User.joins(:questions).where(questions: {title: "Nobis dolor modi aut."})
+    end
+    # muestra la informacion de un usuario dependiendo del numero de preguntas
+    def self.numberq
+      User.joins(:statistic).where(statistics: {number_of_questions: 237})
+    end
 
 end

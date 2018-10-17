@@ -1,16 +1,14 @@
 class CommentsController < ApplicationController
   # para GET
   def index
-    comments = Comment.all
+    comments = Comment.all.paginate(page: params[:page],per_page: 10)
     render json:comments, status:200
   end
 
-  # para SHOW
+  # para GET/:id
   def show
-    comment = Comment.find(params[:idComment])
-    respond_to do |format|
-       format.json {render json: comment, status:200}
-    end
+    comment = Comment.find(params[:id])
+    render json: comment, status:200
   end
 
   # Para POST
@@ -25,11 +23,9 @@ class CommentsController < ApplicationController
 
   # para DELETE
   def destroy
-      comment = Comment.find(params[:idComment])
+      comment = Comment.find(params[:id])
       comment.destroy
-      respond_to do |format|
-          format.json {render json: comment, status: 200}
-      end
+      render json: comment, status: 200
   end
 
   #para PUT o PATCH
@@ -44,6 +40,6 @@ class CommentsController < ApplicationController
   end
 
   def params_comment
-      params.permit(:idComment, :Description, :Date, :commentable)
+      params.permit(:description, :date, :user_id, :answer_id)
   end
 end

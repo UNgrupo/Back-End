@@ -2,16 +2,18 @@ class AnswersController < ApplicationController
 
     # para GET
     def index
-      answers = Answer.all
+      #answers = Answer.all
+      # using pagiante muestra 10 registros por paginate
+      # date es un scope declarado en el modelo answer.rb
+      answers = Answer.all.paginate(page: params[:page],per_page: 10)
       render json:answers, status:200
+
     end
 
     # para SHOW
     def show
-      answer = Answer.find(params[:idAnswer])
-      respond_to do |format|
-         format.json {render json: answer, status:200}
-      end
+      answer = Answer.find(params[:id])
+      render json: answer, status:200
     end
 
     # Para POST
@@ -26,11 +28,9 @@ class AnswersController < ApplicationController
 
     # para DELETE
     def destroy
-        answer = Answer.find(params[:idAnswer])
+        answer = Answer.find(params[:id])
         answer.destroy
-        respond_to do |format|
-            format.json {render json: answer, status: 200}
-        end
+        render json: answer, status: 200
     end
 
     #para PUT o PATCH
@@ -45,6 +45,6 @@ class AnswersController < ApplicationController
     end
 
     def params_answer
-        params.permit(:idAnswer, :Description, :Qualification, :Date)
+        params.permit(:description, :qualification, :date, :user_id, :question_id)
     end
 end

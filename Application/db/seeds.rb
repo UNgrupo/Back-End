@@ -5,92 +5,93 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
-# poblar base de datos usando gem FAKER
-100.times do
-  Answer.create([{
-    answerable_type: Answer,
-    answerable_id:Faker::Number.number(5),
-    idAnswer:Faker::Number.number(5),
-    Description: Faker::String.random(24),
-    Qualification:Faker::Number.number(2),
-    Date:Faker::Date.forward(10)
-  }])
+it = 1
+
+5.times do
+  Subject.new(
+      "name":Faker::Lorem.word,
+      "number_of_topics":Faker::Number.number(3)
+  ).save
 end
 
-
-100.times do
-  Comment.create([{
-      commentable_type: Comment,
-      commentable_id:Faker::Number.number(5),
-      idComment:Faker::Number.number(5),
-      Description:Faker::String.random(24),
-      Date: Faker::Date.forward(10)
-  }])
+50.times do
+  User.new(
+      "name":Faker::Name.name,
+      "email":Faker::Internet.unique.email,
+      "usern":Faker::Name.name,
+      "password": Faker::Alphanumeric.alphanumeric(25),
+      "level":Faker::Number.number(3),
+      "reputation":Faker::LeagueOfLegends.rank,
+      "role":"student",
+      "number_of_followers":Faker::Number.number(3),
+      "photo":"null"
+  ).save
+  Statistic.new(
+      "points":Faker::Number.number(3),
+      "number_of_answers":Faker::Number.number(3),
+      "number_of_questions":Faker::Number.number(3),
+      "number_of_best_answers":Faker::Number.number(3),
+      "user_id":it
+  ).save
+  it = it + 1
 end
 
-100.times do
-  Question.create([{
-      questionable_type: Question,
-      questionable_id: Faker::Number.number(5),
-      idQuestion: Faker::Number.number(5),
-      Title:Faker::String.random(20),
-      Description:Faker::String.random(24),
-      Date:Faker::Date.forward(10)
-  }])
+it = 1
+2.times do
+  Topic.new(
+      "name":Faker::Lorem.word,
+      "subject_id":it
+  ).save
+  it = it + 1
 end
 
+it = 1
+it2 = 1
 100.times do
-  Theme.create([{
-      idTheme:Faker::Number.number(5),
-      Name:Faker::Number.number(7),
-      Questions_number:Faker::Number.number(3),
-      idMatter:Faker::Number.number(5)
-  }])
+  it2 = 1
+  2.times do
+    Question.new(
+        "title":Faker::Lorem.sentence,
+        "description":Faker::Lorem.sentence,
+        "date":Faker::Date.forward(10),
+        "user_id":it,
+        "topic_id":it2
+    ).save
+    it2 = it2 + 1
+  end
+  it = it +1
 end
 
-100.times do
-  User.create([{
-      idUser: Faker::Number.number(5),
-      Name: Faker::Name.name_with_middle,
-      Level: Faker::Number.number(2),
-      Reputation: "high",
-      Role: "user",
-      Followers_number: Faker::Number.number(3),
-      idStat: Faker::Number.number(5)
-  }])
+it = 1
+it2 = 1
+50.times do
+  2.times do
+    Answer.new(
+        "description":Faker::Lorem.sentence,
+        "qualification":Faker::Number.number(2),
+        "date":Faker::Date.forward(10),
+        "user_id":it2,
+        "question_id":it
+    ).save
+    Comment.new(
+        "description":Faker::Lorem.sentence,
+        "date":Faker::Date.forward(10),
+        "user_id":it2,
+        "answer_id":it2
+    ).save
+    it = it + 1
+  end
+  it2 = it2 + 1
 end
 
-
-#100.times do
-#  Document.create(
-#    :idDocument:
-#    :Title:
-#  )
-#end
-
-#100.times do
-#  Matter.create(
-#    idMatter:
-#    Name:
-#    Themes_number:
-#  )
-#end
-
-#100.times do
-#  Photo.create(
-#    idPhoto:
-#    Title:
-#    idUser:
-#  )
-#end
-
-#100.times do
-#  Stat.create(
-#    idStat:
-#    Points:
-#    Questions_number:
-#    Answers_number:
-#    Best_Answers:
-#  )
-#end
+it = 1
+10.times do
+  Document.new(
+      "title":Faker::Lorem.sentence,
+      "user_id":it,
+      "question_id":it
+  ).save
+  it = it + 1
+end

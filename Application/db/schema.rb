@@ -10,96 +10,92 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_020238) do
+ActiveRecord::Schema.define(version: 2018_10_08_144260) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string "answerable_type"
-    t.integer "answerable_id"
-    t.integer "idAnswer"
-    t.text "Description"
-    t.integer "Qualification"
-    t.date "Date"
+    t.text "description"
+    t.integer "qualification"
+    t.date "date"
+    t.bigint "user_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answerable_type", "answerable_id"], name: "index_answers_on_answerable_type_and_answerable_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commentable_type"
-    t.integer "commentable_id"
-    t.integer "idComment"
-    t.text "Description"
-    t.date "Date"
+    t.text "description"
+    t.date "date"
+    t.bigint "user_id"
+    t.bigint "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["answer_id"], name: "index_comments_on_answer_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "documentable_type"
-    t.integer "documentable_id"
-    t.integer "idDocument"
-    t.string "Title"
+    t.string "title"
+    t.bigint "user_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documentable_type", "documentable_id"], name: "index_documents_on_documentable_type_and_documentable_id"
-  end
-
-  create_table "matters", force: :cascade do |t|
-    t.integer "idMatter"
-    t.string "Name"
-    t.integer "Themes_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer "idPhoto"
-    t.string "Title"
-    t.integer "idUser"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_documents_on_question_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "questionable_type"
-    t.integer "questionable_id"
-    t.integer "idQuestion"
-    t.string "Title"
-    t.text "Description"
-    t.date "Date"
+    t.string "title"
+    t.text "description"
+    t.date "date"
+    t.bigint "user_id"
+    t.bigint "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id"
+    t.index ["topic_id"], name: "index_questions_on_topic_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "stats", force: :cascade do |t|
-    t.integer "idStat"
-    t.integer "Points"
-    t.integer "Questions_number"
-    t.integer "Answers_number"
-    t.integer "Best_Answers"
+  create_table "statistics", force: :cascade do |t|
+    t.integer "points"
+    t.integer "number_of_answers"
+    t.integer "number_of_questions"
+    t.integer "number_of_best_answers"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_statistics_on_user_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "name"
+    t.integer "number_of_topics"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "themes", force: :cascade do |t|
-    t.integer "idTheme"
-    t.string "Name"
-    t.integer "Questions_number"
-    t.integer "idMatter"
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_id"], name: "index_topics_on_subject_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "idUser"
-    t.string "Name"
-    t.integer "Level"
-    t.string "Reputation"
-    t.string "Role"
-    t.integer "Followers_number"
-    t.integer "idStat"
+    t.string "name"
+    t.string "email"
+    t.string "usern"
+    t.string "password"
+    t.integer "level"
+    t.string "reputation"
+    t.string "role"
+    t.integer "number_of_followers"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
