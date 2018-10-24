@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
 
+    before_action :authenticate_user
     # para GET
     def index
       #answers = Answer.all

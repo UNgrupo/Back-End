@@ -1,5 +1,6 @@
 class StatisticsController < ApplicationController
 
+    before_action :authenticate_user
     # para GET
     def index
        #statistics = Statistic.all.paginate(page: params[:page],per_page: 10)

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user
   # para GET
   def index
     #comments = Comment.all.paginate(page: params[:page],per_page: 10)

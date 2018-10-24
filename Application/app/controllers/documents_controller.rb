@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
 
+    before_action :authenticate_user
     # para GET
     def index
        #document = Document.all.paginate(page: params[:page],per_page: 10)

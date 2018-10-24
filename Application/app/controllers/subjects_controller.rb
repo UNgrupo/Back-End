@@ -1,4 +1,6 @@
 class SubjectsController < ApplicationController
+
+  before_action :authenticate_user
   # para GET
   def index
     #subjects = Subject.all.paginate(page: params[:page],per_page: 10)
