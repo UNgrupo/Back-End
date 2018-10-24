@@ -2,7 +2,8 @@ class StatisticsController < ApplicationController
 
     # para GET
     def index
-       statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
+       #statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
+       statistics = Statistic.all
        render json:statistics, status:200
     end
 

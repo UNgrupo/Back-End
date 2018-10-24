@@ -3,7 +3,8 @@ class UsersController < ApplicationController
     before_action :authenticate_user, only: [:index]
     # para GET
     def index
-       users = User.all.paginate(page: params[:page],per_page: 20)
+       #users = User.all.paginate(page: params[:page],per_page: 20)
+       users = User.all
        render json:users, status:200
        #render json:users, status:200
     end
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.permit(:name, :email ,:usern, :password, :level, :reputation, :role, :number_of_followers, :photo)
+       params.require(:user).permit(:name, :email ,:usern, :password, :level, :reputation, :role, :number_of_followers, :photo)
    end
 
 end

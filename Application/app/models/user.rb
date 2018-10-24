@@ -23,10 +23,13 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates :password, presence: true, length: {minimum: 5}
-    validates :email, presence: true,null: false, unique: true
+    validates_length_of :password, maximum: 72, minimum: 6, allow_nil: false, allow_blank: false
+
+    validates :email, presence: true,null: false
     validates :name, presence: true, length: {minimum: 5}
-    validates :usern, presence: true, unique: true
+    validates_uniqueness_of :usern
+    validates_uniqueness_of :email
+    validates :usern, presence: true
     validates :level, presence: true
     validates :role, presence: true
 

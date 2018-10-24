@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   # para GET
   def index
-    questions = Question.all.paginate(page: params[:page],per_page: 10)
+    #questions = Question.all.paginate(page: params[:page],per_page: 10)
+    questions = Question.all
     render json: questions, status:200
   end
 
