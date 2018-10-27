@@ -13,6 +13,11 @@ gem 'annotate'
 # paginacion
 gem 'will_paginate', '~> 3.1.0'
 
+#generacion de reportes PDF
+gem 'wicked_pdf'
+# html --> PDF
+gem 'wkhtmltopdf-binary'
+
 #realizar peticiones desde el backEnd
 gem 'httparty', '~> 0.13.7'
 

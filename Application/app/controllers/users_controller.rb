@@ -5,8 +5,12 @@ class UsersController < ApplicationController
     # para GET
     def index
        @users = User.all.paginate(page: params[:page],per_page: 20)
-       render json:@users, status:200
-       #render json:users, status:200
+       respond_to do |format|
+          # Muestra los usuarios en formato JSON
+          format.json { render :json => @users }
+          # Genera un reporte en pdf con todos los usuarios de la db
+          format.pdf {render template: 'users/reporte', pdf: 'reporte' }
+       end
     end
 
     # para GET/:id
