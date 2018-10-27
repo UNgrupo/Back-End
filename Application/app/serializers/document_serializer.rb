@@ -1,3 +1,3 @@
 class DocumentSerializer < ActiveModel::Serializer
-  attributes :id,:title, :user_id, :question_id
+  attributes :id,:name, :type_file,:extension,:path
 end

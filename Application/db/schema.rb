@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_144260) do
+ActiveRecord::Schema.define(version: 2018_10_27_034509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "title"
+    t.string "name", null: false
+    t.string "type_file", null: false
+    t.string "extension", null: false
+    t.string "path", null: false
     t.bigint "user_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
@@ -95,9 +98,12 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
     t.string "reputation"
     t.string "role"
     t.integer "number_of_followers"
-    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.bigint "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["email"], name: "index_users_on_email"
   end
 

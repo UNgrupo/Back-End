@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :reputation
       t.string :role
       t.integer :number_of_followers
-      t.string :photo
+      #t.string :photo
 
       t.timestamps
     end

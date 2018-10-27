@@ -19,22 +19,27 @@ class User < ApplicationRecord
     has_many :questions
     has_many :answers
     has_many :comments
+    has_many :documents
     has_one :statistic
 
     has_secure_password
 
     validates_length_of :password, maximum: 72, minimum: 6, allow_nil: true, allow_blank: false
-
-    #validates :email, presence: true,null: false
     validates :name, presence: true, length: {minimum: 5}
     validates_presence_of :email
     validates_presence_of :usern
     validates_uniqueness_of :usern
     validates_uniqueness_of :email
-
     validates :level, presence: true
     validates :role, presence: true
 
+    # paperclip
+    has_attached_file :photo,style:{
+        medium: "1280x720",
+        thumb: "800x600"
+    }
+    validate_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+    
 
     #Mostra la informacion del usurio de acuerdo al titulo de la pregunta
     def self.quest

@@ -11,18 +11,20 @@
 #
 
 class Document < ApplicationRecord
+
     belongs_to :question
     belongs_to :user
 
     validates :question_id, presence: true
     validates :user_id, presence: true
-    validates :title, presence: true, length: {minimum: 10}
+    validates :name, presence: true, length: {minimum: 10}
+
+
     #SCOPES
 
     def self.title
-        Document.where(title: "Quia accusamus fugiat iusto.")
+        Document.where(name: "Todo sobre la via lactea")
     end
-
     #Mostrar la informacion de un documento tomando el nombre de un usuario
     def self.userdoc
         Document.joins(:user).where(users: {name: "Doug Mayer"})

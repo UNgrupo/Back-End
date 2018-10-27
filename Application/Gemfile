@@ -41,6 +41,10 @@ gem 'active_model_serializers' # Gema que permite dar formato JSON a los paráme
 gem 'knock' # Gema para la autenticación en Rails
 gem 'jwt' # Gema para usar JSON Web Token
 
+# subir archivos
+#gem "paperclip", "~> 6.0.0"
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
