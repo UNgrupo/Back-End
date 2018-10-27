@@ -6,10 +6,8 @@ class AnswersController < ApplicationController
       #answers = Answer.all
       # using pagiante muestra 10 registros por paginate
       # date es un scope declarado en el modelo answer.rb
-      #answers = Answer.all.paginate(page: params[:page],per_page: 10)
-      answers = Answer.all
+      answers = Answer.all.paginate(page: params[:page],per_page: 10)
       render json:answers, status:200
-
     end
 
     # para SHOW
@@ -47,6 +45,6 @@ class AnswersController < ApplicationController
     end
 
     def params_answer
-        params.permit(:description, :qualification, :date, :user_id, :question_id)
+        params.require(:answer).permit(:description, :qualification, :date, :user_id, :question_id)
     end
 end

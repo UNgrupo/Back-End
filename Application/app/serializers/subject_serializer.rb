@@ -1,3 +1,3 @@
 class SubjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :number_of_topics
+  attributes :id,:name,:number_of_topics
 end

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-    # Filtro que verifica si el cliente está autorizado para usar el método auth
+  # Filtro que verifica si el cliente está autorizado para usar el método auth
     before_action :authenticate_user,  only: [:auth]
 
     # Método público que muestra una respuesta en la ruta principal

@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "usern"
+    t.string "email", null: false
+    t.string "usern", null: false
     t.string "password_digest"
     t.integer "level"
     t.string "reputation"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_144260) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
 end

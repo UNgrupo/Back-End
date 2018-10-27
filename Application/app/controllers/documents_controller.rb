@@ -3,8 +3,7 @@ class DocumentsController < ApplicationController
     before_action :authenticate_user
     # para GET
     def index
-       #document = Document.all.paginate(page: params[:page],per_page: 10)
-       document = Document.all
+       document = Document.all.paginate(page: params[:page],per_page: 10)
        render json:document, status:200
     end
 
@@ -42,7 +41,7 @@ class DocumentsController < ApplicationController
    end
 
    def params_document
-       params.permit(:title, :user_id, :question_id)
+       params.require(:document).permit(:title, :user_id, :question_id)
    end
 
 end

@@ -3,8 +3,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user
   # para GET
   def index
-    #questions = Question.all.paginate(page: params[:page],per_page: 10)
-    questions = Question.all
+    questions = Question.all.paginate(page: params[:page],per_page: 10)
     render json: questions, status:200
   end
 
@@ -43,6 +42,6 @@ class QuestionsController < ApplicationController
   end
 
   def params_question
-      params.permit(:title, :description, :date, :user_id, :topic_id)
+      params.require(:question).permit(:title, :description, :date, :user_id, :topic_id)
   end
 end

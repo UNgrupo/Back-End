@@ -1,10 +1,5 @@
 Knock.setup do |config|
 
-  config.token_lifetime = 1.week # El tiempo de vida del token será de una semana
-	config.token_signature_algorithm = 'HS256' # SHA-256
-	#config.token_secret_signature_key = -> { Rails.application.secrets.secret_key_base }
-  config.token_secret_signature_key = -> { Rails.application.credentials.read }
-  #config.token_secret_signature_key = -> { Rails.application.credentials.fetch(:secret_key_base)}
   ## Expiration claim
   ## ----------------
   ##
@@ -13,7 +8,10 @@ Knock.setup do |config|
   ##
   ## Default:
   # config.token_lifetime = 1.day
-
+  config.token_lifetime = 1.week # El tiempo de vida del token será de una semana
+	config.token_signature_algorithm = 'HS256' # SHA-256
+	#config.token_secret_signature_key = -> { Rails.application.secrets.secret_key_base }
+  config.token_secret_signature_key = -> { Rails.application.credentials.read }
 
   ## Audience claim
   ## --------------

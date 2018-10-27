@@ -23,15 +23,18 @@ class User < ApplicationRecord
 
     has_secure_password
 
-    validates_length_of :password, maximum: 72, minimum: 6, allow_nil: false, allow_blank: false
+    validates_length_of :password, maximum: 72, minimum: 6, allow_nil: true, allow_blank: false
 
-    validates :email, presence: true,null: false
+    #validates :email, presence: true,null: false
     validates :name, presence: true, length: {minimum: 5}
+    validates_presence_of :email
+    validates_presence_of :usern
     validates_uniqueness_of :usern
     validates_uniqueness_of :email
-    validates :usern, presence: true
+
     validates :level, presence: true
     validates :role, presence: true
+
 
     #Mostra la informacion del usurio de acuerdo al titulo de la pregunta
     def self.quest
