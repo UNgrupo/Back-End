@@ -38,8 +38,14 @@ class User < ApplicationRecord
         medium: "1280x720",
         thumb: "800x600"
     }
-    validate_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+    validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
     
+    # despues de haber sido creada la pregunta se envia un correo
+    after_create :send_mail
+
+    def send_mail
+        UserMailer.new_user(self).deliver_later
+    end
 
     #Mostra la informacion del usurio de acuerdo al titulo de la pregunta
     def self.quest

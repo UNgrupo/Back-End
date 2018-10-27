@@ -19,6 +19,13 @@ class Document < ApplicationRecord
     validates :user_id, presence: true
     validates :name, presence: true, length: {minimum: 10}
 
+    # paperclip
+    # take of https://github.com/thoughtbot/paperclip/issues/2448
+    has_attached_file :file
+
+    validates_attachment_content_type :file ,content_type: [
+         "application/pdf", "application/msword"
+    ]
 
     #SCOPES
 
