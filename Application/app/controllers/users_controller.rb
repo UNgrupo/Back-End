@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :authenticate_user, only: [:destroy]
+    before_action :authenticate_user, only: [:index,:show,:destroy,:update]
 
     # para GET
     def index

@@ -39,7 +39,7 @@ class User < ApplicationRecord
         thumb: "800x600"
     }
     validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
-    
+
     # despues de haber sido creada la pregunta se envia un correo
     after_create :send_mail
 
@@ -56,5 +56,17 @@ class User < ApplicationRecord
     def self.numberq
       User.joins(:statistic).where(statistics: {number_of_questions: 237})
     end
+
+    #Autenticacion con Facebook
+    def self.from_omniauth(auth)
+      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+          user.provider = auth.provider
+          user.uid = auth.uid
+          user.name = auth.info.name
+          user.oauth_token = auth.credentials.token
+          user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+          user.save!
+      end
+  end
 
 end
