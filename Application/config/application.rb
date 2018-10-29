@@ -39,5 +39,7 @@ module Backend
     # Skip views, helpers and assets when generating a new resource.
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
+    # Arreglar problemas con post en Users
+    config.middleware.use ActionDispatch::Flash
   end
 end

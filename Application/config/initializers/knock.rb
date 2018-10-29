@@ -12,6 +12,7 @@ Knock.setup do |config|
 	config.token_signature_algorithm = 'HS256' # SHA-256
 	#config.token_secret_signature_key = -> { Rails.application.secrets.secret_key_base }
   config.token_secret_signature_key = -> { Rails.application.credentials.read }
+  #config.token_secret_signature_key = -> { Rails.application.credentials.secret_key_base }
 
   ## Audience claim
   ## --------------

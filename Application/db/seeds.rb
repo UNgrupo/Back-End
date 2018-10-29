@@ -9,7 +9,7 @@ require 'faker'
 
 it = 1
 
-5.times do
+10.times do
   Subject.new(
       "name":Faker::Lorem.word,
       "number_of_topics":Faker::Number.number(3)
@@ -37,14 +37,16 @@ end
   it = it + 1
 end
 
-it = 1
-2.times do
-  Topic.new(
-      "name":Faker::Lorem.word,
-      "subject_id":it
-  ).save
-  it = it + 1
-end
+Topic.new("name":"hallo i am a new topic","subject_id":1).save
+Topic.new("name":"Matematicas Basicas","subject_id":1).save
+Topic.new("name":"Fisica Nuclear aplicada","subject_id":2).save
+Topic.new("name":"hallo i am the second topic","subject_id":2).save
+Topic.new("name":"Calculo multivariado","subject_id":3).save
+Topic.new("name":"hallo i am the next topic","subject_id":3).save
+Topic.new("name":"i need a new life, an a car","subject_id":4).save
+Topic.new("name":"need a new topic in this moment","subject_id":4).save
+Topic.new("name":"change your mind, and change the world","subject_id":5).save
+Topic.new("name":"dont need a new topic, ok?","subject_id":5).save
 
 it = 1
 it2 = 1
