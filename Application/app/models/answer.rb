@@ -22,6 +22,12 @@ class Answer < ApplicationRecord
     validates :description, presence: true, length: {minimum: 15}
     validates :date, presence: true
 
+    # despues de haber sido creada la respuesta se envia un correo
+    after_create :send_mail
+
+    def send_mail
+        AnswerMailer.new_answer(self).deliver_later
+    end
     #SCOPES
     # Mostrar una respuesta por medio de la description
     def self.desc

@@ -1,0 +1,14 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1><%= @question.title %></h1>
+        <p>
+            <%= truncate(@question.description, length: 10)%>
+        </p>
+        <p>
+            <%=link_to "read more",question_url(@question)%>
+        </p>
+    <body>
+</html>

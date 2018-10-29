@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user
   # para GET
   def index
     comments = Comment.all.paginate(page: params[:page],per_page: 10)
@@ -40,6 +42,6 @@ class CommentsController < ApplicationController
   end
 
   def params_comment
-      params.permit(:description, :date, :user_id, :answer_id)
+      params.require(:comment).permit(:description, :date, :user_id, :answer_id)
   end
 end

@@ -56,11 +56,25 @@
 #      rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  # RUtas de Home Controller
-	root   'home#index'
-	get    'auth'            => 'home#auth'
 
-  post 'user_token' => 'user_token#create'
+  # RUtas de Home Controller
+  root   'home#index'
+  get    'auth'            => 'home#auth'
+
+  post 'user_token'        => 'user_token#create'
+
+  # Facebook authentication
+  get   'auth/:provider/callback'    =>  'sessions#create'
+  post  'auth/:provider/callback'   =>  'sessions#create'
+  get   'auth/failure'              =>  redirect('/')
+  post  'auth/failure'              =>  redirect('/')
+  get   'signout'                   =>  'sessions#destroy'
+  post  'signout'                   =>  'sessions#destroy'
+
+  #match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  #match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  #match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
   resources :answers
   resources :comments
   resources :documents

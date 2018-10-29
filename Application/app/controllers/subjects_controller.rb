@@ -1,4 +1,7 @@
 class SubjectsController < ApplicationController
+
+  
+  before_action :authenticate_user
   # para GET
   def index
     subjects = Subject.all.paginate(page: params[:page],per_page: 10)
@@ -40,6 +43,6 @@ class SubjectsController < ApplicationController
   end
 
   def params_subject
-      params.permit(:name,:number_of_topics)
+      params.require(:subject).permit(:name,:number_of_topics)
   end
 end

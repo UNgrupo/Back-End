@@ -1,5 +1,6 @@
 class StatisticsController < ApplicationController
 
+    before_action :authenticate_user
     # para GET
     def index
        statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
@@ -41,7 +42,7 @@ class StatisticsController < ApplicationController
    end
 
    def params_statistic
-       params.permit(:points, :number_of_questions, :number_of_answers, :number_of_best_answers,:user_id)
+       params.require(:statistic).permit(:points, :number_of_questions, :number_of_answers, :number_of_best_answers,:user_id)
    end
 
 end

@@ -23,6 +23,13 @@ class Question < ApplicationRecord
     validates :title, presence: true, length: {minimum: 10}
     validates :description, presence: true, length: {minimum: 15}
     validates :date, presence: true
+    # despues de haber sido creada la pregunta se envia un correo
+    after_create :send_mail
+
+    def send_mail
+        QuestionMailer.new_question(self).deliver_later
+    end
+
 
     #SCOPES
     #Buscar una pregunta de un usuario

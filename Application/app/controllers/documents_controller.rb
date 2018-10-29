@@ -1,5 +1,7 @@
 class DocumentsController < ApplicationController
 
+    before_action :authenticate_user
+
     # para GET
     def index
        document = Document.all.paginate(page: params[:page],per_page: 10)
@@ -40,7 +42,7 @@ class DocumentsController < ApplicationController
    end
 
    def params_document
-       params.permit(:title, :user_id, :question_id)
+       params.require(:document).permit(:name, :type_file,:extension,:path)
    end
 
 end
