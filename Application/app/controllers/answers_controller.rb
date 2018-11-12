@@ -6,7 +6,8 @@ class AnswersController < ApplicationController
       #answers = Answer.all
       # using pagiante muestra 10 registros por paginate
       # date es un scope declarado en el modelo answer.rb
-      answers = Answer.all.paginate(page: params[:page],per_page: 10)
+      # answers = Answer.all.paginate(page: params[:page],per_page: 10)
+      answers = Answer.all
       render json:answers, status:200
     end
 

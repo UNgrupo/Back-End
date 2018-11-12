@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
 
-    before_action :authenticate_user, only: [:index,:show,:destroy,:update]
+    #before_action :authenticate_user, only: [:index,:show,:destroy,:update]
 
     # para GET
     def index
-       @users = User.all.paginate(page: params[:page],per_page: 20)
-       respond_to do |format|
+       #@users = User.all.paginate(page: params[:page],per_page: 20)
+       @users = User.all
+       render json: @users, status:200
+       #respond_to do |format|
           # Muestra los usuarios en formato JSON
-          format.json { render :json => @users }
+       #    format.json { render :json => @users }
           # Genera un reporte en pdf con todos los usuarios de la db
-          format.pdf {render template: 'users/reporte', pdf: 'reporte' }
-       end
+       #    format.pdf {render template: 'users/reporte', pdf: 'reporte' }
+       #end
     end
 
     # para GET/:id
@@ -45,6 +47,12 @@ class UsersController < ApplicationController
            render json: user.errors, status: 422
        end
 
+   end
+
+   # informacion de un usuario
+   def usern
+      user = User.username(params[:usern])
+      render json: user, status: 200
    end
 
    def params_user

@@ -75,6 +75,25 @@ Rails.application.routes.draw do
   #match 'auth/failure', to: redirect('/'), via: [:get, :post]
   #match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
+  # Filtros para las estadisticas
+  get 'statistics/points/:points'  => 'statistics#point'
+  get 'statistics/questions/:number_of_questions'  => 'statistics#question'
+  get 'statistics/answers/:number_of_answers'  => 'statistics#answer'
+
+  # Encontrar las estadisticas de un usuario por su username
+  get 'statistics/user/:usern'  => 'statistics#user'
+
+  #Encontrar la informacion de un usuario por su username
+  get 'users/name/:usern'  => 'users#usern'
+
+  # Utilizar el API externa
+  get 'clash/api/arenas'        => 'clash#arenas'
+  get 'clash/api/cards'         => 'clash#cards'
+  get 'clash/api/chests'        => 'clash#chests'
+  get 'clash/api/players'       => 'clash#players'
+  get 'clash/api/random'        => 'clash#random'
+
+
   resources :answers
   resources :comments
   resources :documents
