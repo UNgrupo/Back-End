@@ -42,7 +42,9 @@ class User < ApplicationRecord
 
     # despues de haber sido creada la pregunta se envia un correo
     after_create :send_mail
-
+    def self.username(username)
+        User.where(usern: username)
+    end
     def send_mail
         UserMailer.new_user(self).deliver_later
     end

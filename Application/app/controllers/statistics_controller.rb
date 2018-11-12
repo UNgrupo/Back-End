@@ -1,10 +1,17 @@
 class StatisticsController < ApplicationController
 
-    before_action :authenticate_user
+    #before_action :authenticate_user
     # para GET
     def index
-       statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
-       render json:statistics, status:200
+       #statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
+       @statistics = Statistic.all
+       respond_to do |format|
+          # Muestra los usuarios en formato JSON
+          format.json { render :json => @statistics }
+          # Genera un reporte en pdf con todos los usuarios de la db
+          format.pdf {render template: 'statisctics/reporte', pdf: 'reporte' }
+       end
+       #render json:@statistics, status:200
     end
 
     # para GET/:id
@@ -40,6 +47,28 @@ class StatisticsController < ApplicationController
        end
 
    end
+
+   def user
+      statistic = Statistic.user(params[:usern])
+      render json: statistic, status:200
+   end
+
+   # para filtrar por puntos
+   def point
+      statistic = Statistic.points(params[:points])
+      render json: statistic, status:200
+   end
+
+   def question
+      statistic = Statistic.question(params[:number_of_questions])
+      render json: statistic, status:200
+   end
+
+   def answer
+      statistic = Statistic.answer(params[:number_of_answers])
+      render json: statistic, status:200
+   end
+
 
    def params_statistic
        params.require(:statistic).permit(:points, :number_of_questions, :number_of_answers, :number_of_best_answers,:user_id)

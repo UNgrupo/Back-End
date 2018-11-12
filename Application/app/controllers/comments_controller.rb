@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user
   # para GET
   def index
-    comments = Comment.all.paginate(page: params[:page],per_page: 10)
+    #comments = Comment.all.paginate(page: params[:page],per_page: 10)
+    comments = Comment.all
     render json:comments, status:200
   end
 

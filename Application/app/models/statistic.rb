@@ -13,6 +13,7 @@
 #
 
 class Statistic < ApplicationRecord
+
     belongs_to :user
 
     validates :points, presence: true
@@ -22,8 +23,23 @@ class Statistic < ApplicationRecord
     validates :user_id, presence: true
 
     # Mostrar el numero de preguntas de un usuario
-    def self.numquest
-        Statistic.joins(:user).where(users: {name: "Libbie Littel"})
+    def self.user(usern)
+        #Sttistic.joins(:user).where(users: {name: "Libbie Littel"})
+        Statistic.joins(:user).where(users: {usern: usern})
+    end
+
+    # Queries necesarios para realizar los filtros
+    def self.points(points)
+        #Statistic.where("points > 300")
+        Statistic.where(points: points)
+    end
+
+    def self.question(questions)
+        Statistic.where(number_of_questions: questions)
+    end
+
+    def self.answer(answers)
+        Statistic.where(number_of_answers: answers)
     end
 
 end
