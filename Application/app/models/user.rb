@@ -42,22 +42,14 @@ class User < ApplicationRecord
 
     # despues de haber sido creada la pregunta se envia un correo
     after_create :send_mail
-    def self.username(username)
-        User.where(usern: username)
-    end
     def send_mail
         UserMailer.new_user(self).deliver_later
     end
+    #def self.username(username)
+    #    User.where(usern: username)
+    #end
 
-    #Mostra la informacion del usurio de acuerdo al titulo de la pregunta
-    def self.quest
-      #Question.where(name: "Doug Mayer")
-      User.joins(:questions).where(questions: {title: "Nobis dolor modi aut."})
-    end
-    # muestra la informacion de un usuario dependiendo del numero de preguntas
-    def self.numberq
-      User.joins(:statistic).where(statistics: {number_of_questions: 237})
-    end
+
 
     #Autenticacion con Facebook
     def self.from_omniauth(auth)
