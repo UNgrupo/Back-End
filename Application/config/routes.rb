@@ -82,6 +82,7 @@ Rails.application.routes.draw do
 
   # Encontrar las estadisticas de un usuario por su username
   get 'statistics/user/:usern'  => 'statistics#user'
+  
 
   #Encontrar la informacion de un usuario por su username
   get 'users/name/:usern'  => 'users#usern'
@@ -94,13 +95,17 @@ Rails.application.routes.draw do
   get 'clash/api/random'        => 'clash#random'
 
 
-  resources :answers
-  resources :comments
-  resources :documents
-  resources :questions
-  resources :statistics
-  resources :subjects
-  resources :topics
-  resources :users
+    resources :subjects
+    resources :topics
+
+    resources :users do
+        resources :statistics
+        resources :documents
+        resources :questions do
+            resources :answers do
+                resources :comments
+            end
+        end
+    end
 
 end
