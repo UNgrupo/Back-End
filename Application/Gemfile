@@ -21,6 +21,10 @@ gem 'wkhtmltopdf-binary'
 #realizar peticiones desde el backEnd
 gem 'httparty', '~> 0.13.7'
 
+# Active Job
+gem 'redis'
+gem 'sidekiq'
+
 # Autenticación con Facebook
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
