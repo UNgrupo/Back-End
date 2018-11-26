@@ -82,7 +82,7 @@ Rails.application.routes.draw do
 
   # Encontrar las estadisticas de un usuario por su username
   get 'statistics/user/:usern'  => 'statistics#user'
-  
+
 
   #Encontrar la informacion de un usuario por su username
   get 'users/name/:usern'  => 'users#usern'
@@ -98,6 +98,14 @@ Rails.application.routes.draw do
     resources :subjects
     resources :topics
 
+    # Rutas Generales
+    resources :statistics
+    resources :documents
+    resources :questions
+    resources :answers
+    resources :comments
+
+    # Rutas de Caracter Especifico
     resources :users do
         resources :statistics
         resources :documents
