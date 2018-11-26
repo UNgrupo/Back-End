@@ -1,9 +1,10 @@
 class StatisticsController < ApplicationController
 
-    #before_action :authenticate_user
+    before_action :authenticate_user
     # para GET
     def index
        #statistics = Statistic.all.paginate(page: params[:page],per_page: 10)
+       #@statistics = Statistic.all
        @statistics = Statistic.all
        respond_to do |format|
           # Muestra los usuarios en formato JSON
