@@ -88,11 +88,8 @@ Rails.application.routes.draw do
   get 'users/name/:usern'  => 'users#usern'
 
   # Utilizar el API externa
-  get 'clash/api/arenas'        => 'clash#arenas'
-  get 'clash/api/cards'         => 'clash#cards'
-  get 'clash/api/chests'        => 'clash#chests'
-  get 'clash/api/players'       => 'clash#players'
-  get 'clash/api/random'        => 'clash#random'
+  get 'guru/api/list'           => 'clash#list'
+  get 'guru/api/metric'        => 'clash#metric'
 
 
     resources :subjects
