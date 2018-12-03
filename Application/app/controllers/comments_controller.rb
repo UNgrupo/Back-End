@@ -16,19 +16,20 @@ class CommentsController < ApplicationController
 
   # Para POST
   def create
-      comment = Comment.new(params_comment)
-      if comment.save
-          render json:comment, status:201
+      @comment = Comment.new(params_comment)
+      @comment.user_id = current_user_id
+      if @comment.save
+          render json:@comment, status:201
       else
-          render json:comment.errors, status: :unprocessable_entity
+          render json:@comment.errors, status: :unprocessable_entity
       end
   end
 
   # para DELETE
   def destroy
-      comment = Comment.find(params[:id])
-      comment.destroy
-      render json: comment, status: 200
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      render json: @comment, status: 200
   end
 
   #para PUT o PATCH

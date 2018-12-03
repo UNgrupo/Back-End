@@ -19,19 +19,20 @@ class AnswersController < ApplicationController
 
     # Para POST
     def create
-        answer = Answer.new(params_answer)
-        if answer.save
-            render json:answer, status:201
+        @answer = Answer.new(params_answer)
+        @answer.user_id = current_user_id
+        if @answer.save
+            render json:@answer, status:201
         else
-            render json:answer.errors, status: :unprocessable_entity
+            render json:@answer.errors, status: :unprocessable_entity
         end
     end
 
     # para DELETE
     def destroy
-        answer = Answer.find(params[:id])
-        answer.destroy
-        render json: answer, status: 200
+        @answer = Answer.find(params[:id])
+        @answer.destroy
+        render json: @answer, status: 200
     end
 
     #para PUT o PATCH

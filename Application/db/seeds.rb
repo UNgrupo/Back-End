@@ -43,10 +43,10 @@ Topic.new("name":"Fisica Nuclear aplicada","subject_id":2).save
 Topic.new("name":"hallo i am the second topic","subject_id":2).save
 Topic.new("name":"Calculo multivariado","subject_id":3).save
 Topic.new("name":"hallo i am the next topic","subject_id":3).save
-Topic.new("name":"i need a new life, an a car","subject_id":4).save
+Topic.new("name":"i need a new life, and a car","subject_id":4).save
 Topic.new("name":"need a new topic in this moment","subject_id":4).save
 Topic.new("name":"change your mind, and change the world","subject_id":5).save
-Topic.new("name":"dont need a new topic, ok?","subject_id":5).save
+Topic.new("name":"do you need a new topic?, ok","subject_id":5).save
 
 it = 1
 it2 = 1

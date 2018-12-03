@@ -16,19 +16,20 @@ class QuestionsController < ApplicationController
 
   # Para POST
   def create
-      question = Question.new(params_question)
-      if question.save
-          render json:question, status:201
+      @question = Question.new(params_question)
+      @question.user_id = current_user.id
+      if @question.save
+          render json:@question, status:201
       else
-          render json:question.errors, status: :unprocessable_entity
+          render json:@question.errors, status: :unprocessable_entity
       end
   end
 
   # para DELETE
   def destroy
-      question = Question.find(params[:id_question])
-      question.destroy
-      render json: question, status: 200
+      @question = Question.find(params[:id])
+      @question.destroy
+      render json: @question, status: 200
   end
 
   #para PUT o PATCH
