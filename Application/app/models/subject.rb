@@ -10,6 +10,7 @@
 #
 
 class Subject < ApplicationRecord
+
     has_many :topics, dependent: :destroy
 
     validates :number_of_topics, presence: true

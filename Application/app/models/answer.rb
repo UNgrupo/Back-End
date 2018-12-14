@@ -22,6 +22,8 @@ class Answer < ApplicationRecord
     validates :description, presence: true, length: {minimum: 15}
     validates :date, presence: true
 
+    validates_numericality_of :qualification, less_than:10
+
     # despues de haber sido creada la respuesta se envia un correo
     after_create :send_mail
 

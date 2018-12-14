@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
 
-  #before_action :authenticate_user
+  before_action :authenticate_user
   # para GET
+
   def index
     #questions = Question.all.paginate(page: params[:page],per_page: 10)
     questions = Question.all
@@ -17,7 +18,7 @@ class QuestionsController < ApplicationController
   # Para POST
   def create
       @question = Question.new(params_question)
-      @question.user_id = current_user.id
+      @question.user_id ||= current_user.id
       if @question.save
           render json:@question, status:201
       else

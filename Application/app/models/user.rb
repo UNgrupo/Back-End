@@ -16,11 +16,11 @@
 
 class User < ApplicationRecord
 
-    has_many :questions
-    has_many :answers
-    has_many :comments
-    has_many :documents
-    has_one :statistic
+    has_many :questions ,dependent: :destroy
+    has_many :answers   ,dependent: :destroy
+    has_many :comments  ,dependent: :destroy
+    has_many :documents ,dependent: :destroy
+    has_one :statistic  ,dependent: :destroy
 
     has_secure_password
 

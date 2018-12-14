@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # para GET
     def index
        #@users = User.all.paginate(page: params[:page],per_page: 20)
-       @users = User.all
+       @users = User.all.order(id: :asc)
        render json: @users, status:200
        #respond_to do |format|
           # Muestra los usuarios en formato JSON
@@ -23,11 +23,11 @@ class UsersController < ApplicationController
 
    # Para POST
    def create
-      user = User.new(params_user)
-      if user.save
-          render json:user, status:201
+      @user = User.new(params_user)
+      if @user.save
+          render json:@user, status:201
       else
-          render json:user.errors, status: :unprocessable_entity
+          render json:@user.errors, status: :unprocessable_entity
       end
   end
 
@@ -56,8 +56,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.require(:user).permit(:name,:email,:usern,:password,:password_confirmation, :level, :reputation, :role, :number_of_follower,:photo)
-       #params.require(:user).permit(:name,:email,:usern,:password, :level, :reputation, :role, :number_of_follower,:photo)
+       params.require(:user).permit(:name,:email,:usern,:password,:password_confirmation, :level, :reputation, :role, :number_of_followers,:photo)
    end
 
 end

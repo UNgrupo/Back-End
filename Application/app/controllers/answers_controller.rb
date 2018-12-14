@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
     # Para POST
     def create
         @answer = Answer.new(params_answer)
-        @answer.user_id = current_user_id
+        @answer.user_id ||= current_user.id
         if @answer.save
             render json:@answer, status:201
         else

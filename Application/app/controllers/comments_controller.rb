@@ -17,7 +17,8 @@ class CommentsController < ApplicationController
   # Para POST
   def create
       @comment = Comment.new(params_comment)
-      @comment.user_id = current_user_id
+      @comment.user_id ||= current_user.id
+
       if @comment.save
           render json:@comment, status:201
       else

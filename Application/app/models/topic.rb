@@ -11,7 +11,7 @@
 
 class Topic < ApplicationRecord
     belongs_to :subject
-    has_many :questions
+    has_many :questions ,dependent: :delete_all
 
     validates :subject_id, presence: true
     validates :name, presence: true, length: {minimum: 5}
