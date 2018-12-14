@@ -9,3 +9,6 @@
 
 - Corrección en el envio de datos al front
     - Realizado por Samael Salcedo
+
+- Se han realizado algunas correcciones
+- Se han terminado de implementar los jobs
