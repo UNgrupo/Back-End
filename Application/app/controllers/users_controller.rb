@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     # para GET
     def index
        #@users = User.all.paginate(page: params[:page],per_page: 20)
-       users = User.all
-       render json: users, status:200
-       #respond_to do |format|
+       @users = User.all.order(:id)
+       render json: @users, status:200
+       respond_to do |format|
           # Muestra los usuarios en formato JSON
-       #    format.json { render :json => @users }
+            format.json { render :json => @users }
           # Genera un reporte en pdf con todos los usuarios de la db
        #    format.pdf {render template: 'users/reporte', pdf: 'reporte' }
        #end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
    end
 
    def params_user
-       params.require(:user).permit(:name,:email,:usern,:password,:password_confirmation, :level, :reputation, :role, :number_of_followers,:photo)
+       params.require(:user).permit(:name, :email, :usern, :password, :password_confirmation, :level, :reputation, :role, :number_of_followers, :photo)
    end
 
 end
