@@ -10,7 +10,7 @@ Navigation: [Website][1] | [FrontEnd repository][2] | **BackEnd repository**
   
   [2]: https://github.com/UNgrupo/Front-End
   
-  **Información
+  **Información**
   
   Aplicacion compuesta por una capa de presentacion construida en React
   la cual consume un Api construida en Ruby on rails y una base de datos realizada en postgres
