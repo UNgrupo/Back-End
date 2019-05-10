@@ -17,8 +17,8 @@ Navigation: [Website][1] | [FrontEnd repository][2] | **BackEnd repository**
 
 
 
-** 🔨**
-Samael Salcedo & Camilo Esteban Nieto Barrera
+**🔨
+Samael Salcedo & Camilo Esteban Nieto Barrera**
 
 
 
